@@ -30,13 +30,15 @@ import 'package:path_provider/path_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final ByteData wad = await rootBundle.load("assets/doom1.wad");
-  Uint8List wadBytes = wad.buffer.asUint8List(wad.offsetInBytes, wad.lengthInBytes);
-
-  final Directory destDirectory = await getApplicationDocumentsDirectory();
+  Directory destDirectory = await getApplicationDocumentsDirectory();
   String wadPath = "${destDirectory.path}/doom1.wad";
-  final file = File(wadPath);
-  await file.writeAsBytes(wadBytes, flush: true);
+  File file = File(wadPath);
+
+  if (!file.existsSync()) {
+    ByteData wad = await rootBundle.load("assets/doom1.wad");
+    Uint8List wadBytes = wad.buffer.asUint8List(0);  
+    await file.writeAsBytes(wadBytes, flush: true);
+  }
 
   Engine();   // Initialize the singleton Engine
 

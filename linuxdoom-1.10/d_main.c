@@ -1037,6 +1037,7 @@ void* D_DoomMain (void* args)
     LOG ("V_Init: allocate screens.\n");
     V_Init ();
 	screens[0] = thread_args->external_fb;
+	free(thread_args);
 
     LOG ("M_LoadDefaults: Load system defaults.\n");
     M_LoadDefaults ();              // load before initing other systems
