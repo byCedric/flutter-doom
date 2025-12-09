@@ -42,8 +42,10 @@ typedef struct ThreadArgs {
 
 void D_AddFile (char *file);
 
+__attribute__((visibility("default"))) __attribute__((used))
 void FlutterDoomStart(char* wad_path, byte* external_fb, uint32_t* external_palette);
 
+__attribute__((visibility("default"))) __attribute__((used))
 void DartPostInput(int dart_key, int dart_pressed_down);
 
 //

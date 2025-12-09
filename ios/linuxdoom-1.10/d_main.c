@@ -1196,4 +1196,6 @@ void* D_DoomMain (void* args)
     }
 
     D_DoomLoop ();  // never returns
+    
+    return NULL;
 }

@@ -1,0 +1,28 @@
+PODS:
+  - DoomSource (1.10.0):
+    - Flutter
+  - Flutter (1.0.0)
+  - objective_c (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - DoomSource (from `.`)
+  - Flutter (from `Flutter`)
+  - objective_c (from `.symlinks/plugins/objective_c/ios`)
+
+EXTERNAL SOURCES:
+  DoomSource:
+    :path: "."
+  Flutter:
+    :path: Flutter
+  objective_c:
+    :path: ".symlinks/plugins/objective_c/ios"
+
+SPEC CHECKSUMS:
+  DoomSource: 7868dc72d3daa0537578e6839e78a05acd278471
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  objective_c: 89e720c30d716b036faf9c9684022048eee1eee2
+
+PODFILE CHECKSUM: f6b476ecaebe02c427a3f7214e6fbd4314446afb
+
+COCOAPODS: 1.16.2

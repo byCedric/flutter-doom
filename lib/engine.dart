@@ -17,6 +17,7 @@
  */
 
 import 'dart:ffi';
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:ffi/ffi.dart';
 
@@ -39,7 +40,13 @@ class Engine {
   }
 
   Engine._constructor() {
-    dylib = DynamicLibrary.open('libdoom.so');
+    if (Platform.isIOS) {
+      dylib = DynamicLibrary.process();
+    }
+    else {
+      dylib = DynamicLibrary.open('libdoom.so');
+    }
+
     dartInitializeApiDL = dylib.lookup<NativeFunction<IntPtr Function(Pointer<Void>)>>('Dart_InitializeApiDL').asFunction();
     registerDartPort = dylib.lookup<NativeFunction<Void Function(Int64)>>('registerDartPort').asFunction();
     flutterDoomStart = dylib.lookup<NativeFunction<Void Function(Pointer<Utf8>, Pointer<UnsignedChar>, Pointer<Uint32>)>>('FlutterDoomStart').asFunction();
